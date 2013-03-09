@@ -55,6 +55,7 @@ gem 'slim'  # required for sidekiq-web
 gem 'therubyracer', require: 'v8'
 gem 'thin'
 gem 'diffy'
+gem 'autoscaler'
 
 # Gem that enables support for plugins. It is required.
 gem 'discourse_plugin', path: 'vendor/gems/discourse_plugin'
@@ -102,7 +103,8 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'librarian', '>= 0.0.25', require: false
-  gem 'pry-rails'  
+  gem 'pry-rails'
+  gem 'awesome_print'
 end
 
 # IMPORTANT: mini profiler monkey patches, so it better be required last
