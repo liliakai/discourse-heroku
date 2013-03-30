@@ -1,14 +1,23 @@
-Setting up Discourse on Heroku
-==============================
+# WhisperSystems Discourse
+
+A fork of discourse, customized for Whisper Systems and heroku.
+
+Setting up Discourse on Heroku for Whisper Systems
+==================================================
 *Last updated for version 0.8.4*
 
 If you follow this guide, you should be able to run fully-functional Discourse on Heroku for free (up to a point)
 
-[view original README](README_ORIG.md)
-
 Clone this repo
 ---------------
-`git clone git://github.com/swrobel/discourse-heroku.git discourse`
+`git clone git://github.com/liliakai/discourse-heroku.git discourse`
+
+Add heroku remote
+-----------------
+Install the heroku gem if necessary: `gem install heroku`
+You will need a heroku account with access to the whisperdiscoure app.
+
+`git remote add heroku git@heroku.com:whisperdiscourse.git`
 
 Install addons
 --------------
@@ -16,11 +25,14 @@ Install addons
 
 might as well use Postgres 9.2 although discourse will work with 9.1, which is Heroku's default at time of writing
 
-`heroku addons:add mandrill:starter rediscloud:20 memcachier:dev scheduler`
+`heroku addons:add mandrill:starter`
+`heroku addons:add rediscloud:20`
+`heroku addons:add memcachier:dev`
+`heroku addons:add scheduler`
 
 mandrill is for email delivery, although the free mailgun or sendgrid plans will work as well (just update the appropriate config vars). memcachier is for rails cache storage.
 
-`heroku labs:enable user-env-compile`
+`heroku labs:enable user-env-compile -a whisperdiscourse`
 
 This will enable asset precompilation to complete successfully.
 
@@ -38,7 +50,7 @@ Push the code, migrate, seed
 ----------------------------
 1. `git push heroku master`
 1. `heroku run rake db:migrate`
-1. `heroku run rake db:seed_fu`
+1. `heroku run rake db:seed_fu` # note: never got this step to work.
 
 Setup scheduler tasks
 ---------------------
@@ -70,7 +82,6 @@ navigate to `http://<your-app>.herokuapp.com/admin/site_settings`
 
 Keeping up to date (optional)
 -----------------------------
-I will try to roughly update this repo every 2 weeks, or when there's a new Discourse point release (although at this point versioning is pretty arbitrary). I'm rebasing rather than merging to maintain a clean tree, so you're going to have to force-pull and force-push to heroku.
+I prefer rebasing rather than merging to maintain a clean tree. If heroku complains about non-fast forwards when you push, use the force:
 
-1. `git pull --force`
 1. `git push --force heroku master`
