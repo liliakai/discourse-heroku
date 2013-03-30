@@ -26,9 +26,13 @@ Install addons
 might as well use Postgres 9.2 although discourse will work with 9.1, which is Heroku's default at time of writing
 
 `heroku addons:add mandrill:starter`
+
 `heroku addons:add rediscloud:20`
+
 `heroku addons:add memcachier:dev`
+
 `heroku addons:add scheduler`
+
 
 mandrill is for email delivery, although the free mailgun or sendgrid plans will work as well (just update the appropriate config vars). memcachier is for rails cache storage.
 
@@ -69,8 +73,8 @@ Set up the scheduled tasks as follows:
                                    
         rake version_check         | Daily          
 
-Setup S3 storage for uploads (optional)
----------------------------------------
+Setup S3 storage for uploads (optional / not done yet)
+------------------------------------------------------
 This is the one non-free area. You can get S3 storage for free if you fall under the free tier for 12 months, but you may have to pay for S3 storage. This should be fairly cheap anyway, all things considered. Run the following:
 
 `heroku config:add AWS_ACCESS_KEY_ID=<your_access_key> AWS_SECRET_ACCESS_KEY=<your_secret_key>`
@@ -85,3 +89,7 @@ Keeping up to date (optional)
 I prefer rebasing rather than merging to maintain a clean tree. If heroku complains about non-fast forwards when you push, use the force:
 
 1. `git push --force heroku master`
+
+What now?
+---------
+https://github.com/discourse/discourse/wiki/The-Discourse-Admin-Quick-Start-Guide
