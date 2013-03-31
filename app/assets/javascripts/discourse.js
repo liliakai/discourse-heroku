@@ -34,11 +34,10 @@ Discourse = Ember.Application.createWithMixins({
 
   titleChanged: function() {
     var title;
-    title = "";
+    title = Discourse.SiteSettings.title + " >> Discourse";
     if (this.get('title')) {
-      title += "" + (this.get('title')) + " - ";
+      title += " >> " + (this.get('title'));
     }
-    title += Discourse.SiteSettings.title;
     $('title').text(title);
     if (!this.get('hasFocus') && this.get('notify')) {
       title = "(*) " + title;
