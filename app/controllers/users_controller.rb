@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   skip_before_filter :check_xhr, only: [:show, :password_reset, :update, :activate_account, :avatar, :authorize_email, :user_preferences_redirect]
   skip_before_filter :authorize_mini_profiler, only: [:avatar]
   skip_before_filter :check_restricted_access, only: [:avatar]
+  skip_before_filter :verify_authenticity_token, only: [:create]
 
   before_filter :ensure_logged_in, only: [:username, :update, :change_email, :user_preferences_redirect]
 
