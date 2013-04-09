@@ -10,7 +10,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 9;
   border-bottom: 1px solid #9baab2;
   background-color: $white;
   @include box-shadow((0 1px 3px rgba($black, 0.12), inset 0 -4px 4px -4px rgba($black, 0.3)));
@@ -19,6 +19,7 @@
   }
   .contents {
     margin: 10px 0;
+    padding-left: 40px;
   }
   .title {
     display: table;
@@ -28,6 +29,9 @@
       display: table-cell;
       vertical-align: middle;
     }
+  }
+  #site-logo {
+    width: 122px;
   }
   .icon-home {
     font-size: 20px;
@@ -136,7 +140,7 @@
 }
 
 #main-outlet {
-  padding-top: 75px;
+  padding-top: 120px;
 }
 
 // Dropdowns
